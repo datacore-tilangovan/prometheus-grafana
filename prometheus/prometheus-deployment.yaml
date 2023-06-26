@@ -26,6 +26,9 @@ spec:
       containers:
       - name: prometheus
         image: prom/prometheus
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
         args:
           - '--storage.tsdb.retention=6h'
           - '--storage.tsdb.path=/prometheus'
