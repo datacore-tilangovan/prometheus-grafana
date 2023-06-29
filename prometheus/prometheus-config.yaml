@@ -144,3 +144,11 @@ data:
         - source_labels: [__meta_kubernetes_endpoints_name]
           regex: 'node-exporter'
           action: keep
+      - job_name: 'minio-job'
+        bearer_token: eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwcm9tZXRoZXVzIiwic3ViIjoibWluaW8iLCJleHAiOjQ4NDE0NzU5NDZ9.jY3DyENaadk-vUpmXlRioVrWjd47Bo6btVa__lfa_fDvyeaZUtDyHpE6I8amvA1X6caKRmkYGSSgMTPAW2Tg5A
+        metrics_path: /minio/v2/metrics/cluster
+        scheme: https
+        tls_config:
+          insecure_skip_verify: true
+        static_configs:
+        - targets: ['minio.tenant-ns.svc.cluster.local:443']
